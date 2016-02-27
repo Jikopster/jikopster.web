@@ -1,0 +1,13 @@
+{
+  "name": "jikopster.web",
+  "scripts": {
+  },
+  "env": {
+  },
+  "addons": [
+
+  ],
+  "buildpacks": [
+
+  ]
+}
