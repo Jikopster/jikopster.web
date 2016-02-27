@@ -1,0 +1,18 @@
+mixin item
+  
+
+extends layout.jade
+
+block title
+  = __('Projects')
+
+block content
+  mixin item(domain, title, text)
+    a.list-group-item(href='//#{domain}.jikopster.org')
+      h4.list-group-item-heading= title
+      p.list-group-item-text= text
+  .list-group
+    +item('touchero', 'Touch Hero', __('touchero description'))
+    +item('vkasync',  'vk audio sync', __('vkasync description'))
+    
+        

@@ -1,0 +1,39 @@
+mixin text(text, url)
+  if text.length < 100
+    = text
+  else
+    = text.substr(0,90)
+    a(href=url) ...
+
+mixin item(item)
+  if item.text
+    -item.url = url+'?w=wall'+item.owner_id+'_'+item.id
+    article
+      p
+        span.label.label-default
+          = item.date
+        | 
+        a(href=item.url)
+          span.label.label-primary
+            span.icon.icon_vk-clear
+        | 
+        +text(item.text, item.url)
+
+extends layout.jade
+
+block title
+  - url = 'https://vk.com/'+news.domain
+  = __("What's new")
+  | 
+  a(href=url,title='vk page')
+    span.icon.icon_vk-clear
+    span.sr-only vk page
+
+block content
+  if news.error
+    p
+      | Something goes wrong. Check out the 
+      a(href=url) vk page
+  if news.items
+    each item in news.items
+      +item(item)

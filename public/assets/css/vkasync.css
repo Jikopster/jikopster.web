@@ -1,0 +1,53 @@
+.jikopster {
+  line-height: 0.18;
+}
+
+.jumbotron img {
+  margin: 0 auto;
+}
+
+.jumbotron {
+  text-align: center;
+}
+.jumbotron h1 {
+  font-weight: bold;
+}
+.jumbotron h1 > .icon {
+  font-size: 108%;
+}
+
+.icon {
+  text-decoration: none !important;
+}
+.icon:not(.social) {
+  line-height: .1;
+}
+.icon.social {
+  font-size: 48px;
+}
+
+.lang {
+  line-height: 2.9;
+  border-radius: 50%;
+  border-width: 1px;
+  border-style: solid;
+  width: 43px;
+  height: 43px;
+  display: inline-block;
+}
+.rotor {
+  display: inline-block;
+  margin: 10px;
+  outline: none !important;
+          transition: transform 0.5s;
+  -webkit-transition: transform 0.5s;
+}
+.rotor:hover {
+          transform: rotate(-345deg);
+      -ms-transform: rotate(-345deg);
+  -webkit-transform: rotate(-345deg);
+}
+
+.img-responsive {
+  margin: auto;
+}

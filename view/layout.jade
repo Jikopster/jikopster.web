@@ -1,0 +1,40 @@
+doctype html
+// Jikopster wuz here
+html(lang=locale)
+  meta(charset='utf-8')
+  meta(http-equiv='X-UA-Compatible', content='IE=edge')
+  meta(name='viewport', content='width=device-width, initial-scale=1, user-scalable=no')
+  
+  block title
+    title Jikopster Orglobster
+
+  meta(name='description', content=__('slogan'))
+  link(rel='stylesheet', href='/assets/css/bootstrap.min.css')
+  link(rel='stylesheet', href='/assets/css/icons.min.css')
+  link(rel='stylesheet', href='/assets/css/vkasync.css')
+  
+  block head
+  
+  block body
+
+  block feet
+  //-
+    footer.navbar.navbar-fixed-bottom.navbar-inverse
+      .container-fluid
+        .navbar-brand Jikopster wuz here
+        ul.nav.navbar-nav
+          li
+            a(href='https://github.com/jikopster')
+              span.icon.icon_github
+                span.sr-only: GitHub
+          li
+            a(href='https://vk.com/jikopster.vkasync')
+              span.icon.icon_vk
+                span.sr-only: vk
+        ul.nav.navbar-nav.navbar-right
+          each l in locales
+            li(class=(l == locale)?'active':'')
+              a(href='?'+locales.param+'='+l)=l
+              if l == locale
+                span.sr-only: = __('current')
+    //
