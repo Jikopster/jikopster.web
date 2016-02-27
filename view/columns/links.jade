@@ -3,7 +3,7 @@ mixin link(title, href)
     block
 
 mixin social(title, name)
-  +link(title, '//'+name+'.com/jikopster')
+  +link(title, 'https://'+name+'.com/jikopster')
     span.social.icon(class='icon_'+name)
       span.sr-only
         = __(title)
@@ -19,7 +19,7 @@ extends layout.jade
 
 block title
   span.text-center
-    a(href='//jikopster.org',title='Jikopster Orglobster')
+    a(href='http://jikopster.org',title='Jikopster Orglobster')
       span.sr-only Jikopster
       img.img-responsive(src='/assets/img/jikopster-28p.png',alt='Jikopster')
 
