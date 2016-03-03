@@ -76,7 +76,7 @@ module.exports = function (grunt) {
     },
   })
   
-  require('load-grunt-tasks')(grunt, { scope: 'devDependencies' })
+  require('load-grunt-tasks')(grunt)
   
   grunt.registerTask('icons', ['clean:icons', 'webfont:icons'])
   

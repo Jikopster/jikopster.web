@@ -35,7 +35,8 @@
   },
   "devDependencies": {
     "grunt-webfont": "1.1.1",
-    "grunt-contrib-clean": "1.0.0"
+    "grunt-contrib-clean": "1.0.0",
+    "load-grunt-tasks": "^3.4.1"
   },
   "scripts": {
     "postinstall": "grunt prod",
