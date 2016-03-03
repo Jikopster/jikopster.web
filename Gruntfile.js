@@ -13,9 +13,6 @@ module.exports = function (grunt) {
       },
     },
     
-    clean: {
-      css: '<%= css.dist %>',
-    },
     less: {
       options: {
         strictMath: true,
@@ -60,12 +57,6 @@ module.exports = function (grunt) {
         src: '*.css',
         dest: 'public/assets/css',
       },
-      fonts: {
-        expand: true,
-        cwd: 'icons/',
-        src: 'fonts/*',
-        dest: 'public/assets/',
-      },
     },
     webfont: {
       icons: {
@@ -74,21 +65,27 @@ module.exports = function (grunt) {
           htmlDemo: false,
           relativeFontPath: '../fonts',
         },
-        src: 'icons/svg/*.svg',
-        dest: 'icons/fonts',
+        src: 'icons/*.svg',
+        dest: 'public/assets/fonts',
         destCss: '<%= less.dir %>',
       },
+    },
+    clean: {
+      css: '<%= css.dist %>',
+      icons: '<%= less.dir %>/icons.less',
     },
   })
   
   require('load-grunt-tasks')(grunt, { scope: 'devDependencies' })
   
-  grunt.registerTask('icons', ['webfont:icons'])
-  grunt.registerTask('styles', ['less:styles', 'autoprefixer:styles', 'csscomb:styles', 'cssmin:styles'])
-  grunt.registerTask('publish', ['copy:css', 'copy:fonts'])
+  grunt.registerTask('icons', ['clean:icons', 'webfont:icons'])
   
-  grunt.registerTask('dist', ['clean', 'icons', 'styles', 'publish'])
+  grunt.registerTask('styles', ['less:styles', 'autoprefixer:styles', 'csscomb:styles', 'cssmin:styles'])
+  grunt.registerTask('css', ['clean:css', 'styles', 'copy:css'])
+  
+  grunt.registerTask('dist', 'icons', 'css')
   grunt.registerTask('test', ['csslint:styles'])
   
   grunt.registerTask('default', ['dist', 'test'])
+  grunt.registerTask('prod', ['css'])
 }

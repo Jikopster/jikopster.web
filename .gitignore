@@ -29,8 +29,7 @@ node_modules
 
 # Assets
 css/dist
-css/less/isons.less
-icons/fonts
+public/assets/css/styles.css
 
 # =========================
 # Operating System Files
