@@ -29,7 +29,7 @@ node_modules
 
 # Assets
 css/dist
-public/assets/css/styles.css
+public/assets/css/styles.min.css
 
 # =========================
 # Operating System Files
