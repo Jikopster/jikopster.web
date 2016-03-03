@@ -32,7 +32,8 @@
     "i18n": "0.7.0",
     "jade": "1.11.0",
     "load-grunt-tasks": "3.4.1",
-    "vk": "github:ischerbakov/vk"
+    "vk": "github:ischerbakov/vk",
+    "vksdk": "5.3.1"
   },
   "devDependencies": {
     "grunt-webfont": "1.1.1"
