@@ -27,6 +27,11 @@ build/Release
 # https://docs.npmjs.com/misc/faq#should-i-check-my-node-modules-folder-into-git
 node_modules
 
+# Assets
+css/dist
+css/less/isons.less
+icons/fonts
+
 # =========================
 # Operating System Files
 # =========================

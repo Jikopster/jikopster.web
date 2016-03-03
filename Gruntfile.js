@@ -40,9 +40,7 @@ module.exports = function (grunt) {
       },
     },
     csscomb: {
-      styles: {
-        src: '<%= css.path %>',
-      }
+      styles: '<%= css.path %>',
     },
     cssmin: {
       styles: {
