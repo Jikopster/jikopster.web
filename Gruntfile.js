@@ -1,50 +1,96 @@
 module.exports = function (grunt) {
   grunt.initConfig({
-    copy: {
-      bootstrap: {
-        expand: true,
-        cwd: 'bootstrap-3.3.6/dist/',
-        src: 'css/bootstrap.min.css',
-        dest: 'public/assets/'
+    css: {
+      dir: 'css',
+      dist: '<%= css.dir %>/dist',
+      name: 'styles',
+      file: '<%= css.name %>.css',
+      path: '<%= css.dist %>/<%= css.file %>',
+      min: {
+        name: '<%= css.name %>.min',
+        file: '<%= css.min.name %>.css',
+        path: '<%= css.dist %>/<%= css.min.file %>',
       },
-      icons: {
-        files: [
-          {
-            expand: true,
-            cwd: 'icons/css',
-            src: 'icons.min.css',
-            dest: 'public/assets/css/'
-          },
-          {
-            expand: true,
-            cwd: 'icons/',
-            src: 'fonts/*',
-            dest: 'public/assets/'
-          }
-        ]
-      }
     },
-    webfont: {
-      icons: {
-        src: 'icons/svg/*.svg',
-        dest: 'icons/fonts',
-        destCss: 'icons/css'
+    
+    clean: {
+      css: '<%= css.dist %>',
+    },
+    less: {
+      options: {
+        strictMath: true,
+      },
+      dir: '<%= css.dir %>/less',
+      styles: {
+        src: '<%= less.dir %>/styles.less',
+        dest: '<%= css.path %>',
+      },
+    },
+    autoprefixer: {
+      styles: {
+        src: '<%= css.path %>',
+      },
+    },
+    csslint: {
+      styles: {
+        options: {
+          csslintrc: '<%= less.dir %>/bootstrap/.csslintrc',
+        },
+        src: '<%= css.path %>',
+      },
+    },
+    csscomb: {
+      styles: {
+        src: '<%= css.path %>',
       }
     },
     cssmin: {
+      styles: {
+        options: {
+          compatibility: 'ie8',
+          keepSpecialComments: '*',
+          advanced: false,
+        },
+        src : '<%= css.path %>',
+        dest: '<%= css.min.path %>',
+      },
+    },
+    copy: {
+      css: {
+        expand: true,
+        cwd: 'css/dist/',
+        src: '*.css',
+        dest: 'public/assets/css',
+      },
+      fonts: {
+        expand: true,
+        cwd: 'icons/',
+        src: 'fonts/*',
+        dest: 'public/assets/',
+      },
+    },
+    webfont: {
       icons: {
-        src: 'icons/css/icons.css',
-        dest: 'icons/css/icons.min.css'
-      }
-    }
+        options: {
+          stylesheet: 'less',
+          htmlDemo: false,
+          relativeFontPath: '../fonts',
+        },
+        src: 'icons/svg/*.svg',
+        dest: 'icons/fonts',
+        destCss: '<%= less.dir %>',
+      },
+    },
   })
   
-  grunt.registerTask('bootstrap', ['copy:bootstrap'])
-  grunt.registerTask('icons', ['webfont:icons', 'cssmin:icons', 'copy:icons'])
+  require('load-grunt-tasks')(grunt, { scope: 'devDependencies' })
   
-  grunt.registerTask('default', ['bootstrap', 'icons'])
+  grunt.registerTask('icons', ['webfont:icons'])
+  grunt.registerTask('styles', ['less:styles', 'autoprefixer:styles', 'csscomb:styles', 'cssmin:styles'])
+  grunt.registerTask('publish', ['copy:css', 'copy:fonts'])
   
-  grunt.loadNpmTasks('grunt-contrib-cssmin')
-  grunt.loadNpmTasks('grunt-contrib-copy')
-  grunt.loadNpmTasks('grunt-webfont')
+  grunt.registerTask('dist', ['clean', 'icons', 'styles', 'publish'])
+  grunt.registerTask('test', ['csslint:styles'])
+  
+  grunt.registerTask('default', ['dist', 'test'])
 }

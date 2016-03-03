@@ -1,0 +1,59 @@
+@import "bootstrap/bootstrap.less";
+@import "icons.less";
+
+.jikopster {
+  line-height: 0.18;
+}
+
+.jumbotron {
+  text-align: center;
+  
+  img {
+    margin: 0 auto;
+  }
+  
+  h1 {
+    font-weight: bold;
+    
+    > .icon {
+      font-size: 108%;
+    }
+  }
+}
+
+.icon {
+  text-decoration: none !important;
+  
+  &:not(.social) {
+    line-height: .1;
+  }
+  
+  &.social {
+    font-size: 48px;
+  }
+}
+
+.lang {
+  line-height: 2.9;
+  border-radius: 50%;
+  border-width: 1px;
+  border-style: solid;
+  width: 43px;
+  height: 43px;
+  display: inline-block;
+}
+
+.rotor {
+  display: inline-block;
+  margin: 10px;
+  outline: none !important;
+    transition: transform 0.5s;
+  
+  &:hover {
+    transform: rotate(-345deg);
+  }
+}
+
+.img-responsive {
+  margin: auto;
+}
