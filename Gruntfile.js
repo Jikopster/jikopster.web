@@ -25,7 +25,7 @@ module.exports = function (grunt) {
     },
     autoprefixer: {
       styles: {
-       file: '<%= css.path %>',
+        src: '<%= css.path %>',
       },
     },
     csslint: {
@@ -38,7 +38,8 @@ module.exports = function (grunt) {
     },
     csscomb: {
       styles: {
-        file: '<%= css.path %>',
+        src: '<%= css.path %>',
+        dest: '<%= css.path %>'
       },
     },
     cssmin: {
