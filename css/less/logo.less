@@ -2,12 +2,12 @@
 @height: 14;
 @distance: 1;
 
-@pix: 100%/@width - 0.03%;
+@pix: (100%/@width - 0.03%);
 @class: pix;
 
 .letterN(@n, @distance: 1) {
-  width: @pix*(@n+@distance*2);
-  .@{class} { width: 100%/(@n+@distance*2); }
+  width: (@pix*(@n+@distance*2));
+  .@{class} { width: (100%/(@n+@distance*2)); }
 }
 
 .jikopster {
